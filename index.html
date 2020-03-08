@@ -11,7 +11,11 @@
 <iframe id="data" src="https://docs.google.com/spreadsheets/u/0/d/1NLnI5mrtmmFCElc1CFmLELZOO9GLs1RENVc4lNLBaY0/htmlembed/sheet?headers=false&gid=160901679" width="640" height="458" ></iframe>
 <script>
   document.getElementById("form").addEventListener("load", function(){
-    setTimeout(function(){document.getElementById('data').contentWindow.location.reload();}, 100);
+    setTimeout(function(){
+      var src = document.getElementById("data").src;
+      document.getElementById("data").removeAttribute("src");
+      document.getElementById("data").setAttribute("src", src)
+    }, 100);
   });
 </script>
 </body>
