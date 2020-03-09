@@ -6,40 +6,44 @@
   </style>
 </head>
 <body>
-  <img src="image.png"/><h1>v2.0.1</h1><br><h4>Latest Update: Auto Refresh: 5 seconds, "refresh" button added
+  <img src="image.png"/><h1>v2.0.1</h1><br><h4>Latest Update: Auto Refresh: 5 seconds, "refresh" button added. Limit 20 char. max
   <hr><span id="formspan" style="display: none">
 <iframe id="form" src="https://docs.google.com/forms/d/e/1FAIpQLScrPFfffRYyMy2JJa_QNefnUgwPLBo2l9UjDmGbQpcZeuS_OQ/viewform?embedded=true" width="800" height="458" frameborder="0" marginheight="0" marginwidth="0"></iframe>
   </span><button id="post">+ Post Messages</button>
   <br>
 <iframe id="data" src="https://docs.google.com/spreadsheets/u/0/d/1NLnI5mrtmmFCElc1CFmLELZOO9GLs1RENVc4lNLBaY0/htmlembed/sheet?headers=false&gid=799321735" width="800" height="458" ></iframe>
 <br>
+  <button id="showall">Show All Conversations ↓</button>
+  <br>
   <button id="reset">REFRESH</button>
 <script>
+  var src = "https://docs.google.com/spreadsheets/u/0/d/1NLnI5mrtmmFCElc1CFmLELZOO9GLs1RENVc4lNLBaY0/htmlembed/sheet?headers=false&gid=799321735";
   document.getElementById("post").addEventListener("click", function(){
     document.getElementById("formspan").style.display = "inline";
     document.getElementById("post").style.display = "none";
   });
   document.getElementById("reset").addEventListener("click", function(){
-    var src = "https://docs.google.com/spreadsheets/u/0/d/1NLnI5mrtmmFCElc1CFmLELZOO9GLs1RENVc4lNLBaY0/htmlembed/sheet?headers=false&gid=799321735";
     document.getElementById("data").removeAttribute("src");
     document.getElementById("data").setAttribute("src", src);
-  }); //https://docs.google.com/spreadsheets/u/0/d/1NLnI5mrtmmFCElc1CFmLELZOO9GLs1RENVc4lNLBaY0/htmlembed/sheet?headers=false&gid=92587278
+  }); 
   reset();
   document.getElementById("form").addEventListener("load", function(){
     setTimeout(function(){
-      var src = "https://docs.google.com/spreadsheets/u/0/d/1NLnI5mrtmmFCElc1CFmLELZOO9GLs1RENVc4lNLBaY0/htmlembed/sheet?headers=false&gid=799321735";
       document.getElementById("data").removeAttribute("src");
       document.getElementById("data").setAttribute("src", src)
     }, 100);
   });
   function reset(){
     setTimeout(function(){
-      var src = "https://docs.google.com/spreadsheets/u/0/d/1NLnI5mrtmmFCElc1CFmLELZOO9GLs1RENVc4lNLBaY0/htmlembed/sheet?headers=false&gid=799321735";
       document.getElementById("data").removeAttribute("src");
       document.getElementById("data").setAttribute("src", src);
       reset();
     }, 5000);
   }
+  document.getElementById("showall").addEventListener("click", function(){
+    src = "https://docs.google.com/spreadsheets/u/0/d/1NLnI5mrtmmFCElc1CFmLELZOO9GLs1RENVc4lNLBaY0/htmlembed/sheet?headers=false&gid=92587278";
+    document.getElementById("reset").click();
+  });
 </script>
 </body>
 </html>
